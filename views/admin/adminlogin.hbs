@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta name="description"
+			content="" />
+		<meta name="viewport"
+			content="width=device-width,
+					initial-scale=1" />
+		<link rel="stylesheet" href="/stylesheets/loginpage.css">
+		<script
+              src="https://code.jquery.com/jquery-3.2.1.js"
+              integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+              crossorigin="anonymous"></script>          
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+		
+	</head>
+	<body>
+		<div class="gfg-div">
+			<form action="/admin/adminlogin" method="post" id="forms">
+			<div class="gfg-logo"></div>
+			<div class="gfg-title">shoe-kart Admin</div>
+		
+	
+			<div class="gfg-input-fields">
+				<div class="gfg-email">
+				
+					<input type="email"
+						placeholder="Email" name="email"/>
+				</div>
+				<div class="gfg-password">
+				
+					<input type="password"
+						placeholder="Password" 
+						name="password"/>
+				</div>
+				<p style="color: red;">{{err}}</p>
+				<div class="gfg-link">
+			
+	
+			</div>
+
+			
+			<button class="gfg-button">Signin</button>
+		
+			</form>
+		</div>
+
+		<script>
+			
+			$(function(){
+				// First: Add with default messages
+				//$("#frm-add-data").validate();				
+
+				// Second: Change default messages
+				$("#forms").validate({
+					errorClass:'Errors',
+                	rules: { // to define rules
+                		password: {
+                			required: true,
+            				minlength: 4
+                		},
+                        
+                        email: {
+                        required: true,
+                        email: true
+                     },  
+                	},
+                    messages:{ // to define custom messages	
+                    	password: {
+				            required: "Please enter Password",
+				            minlength: "Enter minimum 4 digits"
+				        },
+                        email: {
+                            required:'Please enter valid Email ID',
+							
+
+							email: "The email should be in the format: abc@domain.tld"
+						},
+					
+                    },
+                    submitHandler: function(form) {  
+                           if ($(form).valid()) 
+                               form.submit(); 
+                           return false; // prevent normal form posting
+                    }
+                });
+			});
+		</script>
+		    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+	</body>
+</html>

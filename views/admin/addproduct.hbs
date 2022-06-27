@@ -1,0 +1,224 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Default form register -->
+    <div class="container mt-5 col-xl-6">
+      <form
+        class="text-center border border-light p-5"
+        action="/admin/addProduct"
+        method="post"
+        enctype="multipart/form-data"
+      >
+
+        <p class="h4 mb-4">Add Prduct</p>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!--  name -->
+            <input
+              type="text"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="Product Name"
+              name="productName"
+              required
+            />
+          </div>
+       
+        </div>
+           <div class="form-row mb-4 d-flex">
+            {{!-- <div class="col me-2">
+            <!-- category -->
+            <input
+              type="number"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="Size"
+              name="size"
+              required
+            />
+          </div> --}}
+          <div class="col">
+            <!-- brand name -->
+            {{! <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Brand" name="Brand"> }}
+            <select name="brand" class="form-control">
+              <option value="none" selected>Brand Name</option>
+              {{#each brandname}}
+                <option>{{this.BrandName}}</option>
+              {{/each}}
+
+            </select>
+          </div>
+        </div>
+
+        <!-- description -->
+
+        <div class="form-row mb-4 d-flex">
+          <div class="col me-2">
+            <!-- price -->
+            <input
+              type="number"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="MRP Price"
+              name="Mrp"
+            required
+            />
+          </div>
+          <div class="col">
+            <!-- price -->
+            <input
+              type="number"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="Discount "
+              name="Discount"
+              required
+            />
+          </div>
+
+        </div>
+        <div class="form-row mb-4 d-flex">
+          <div class="col me-2">
+            <select name="category" class="form-control">
+              <option value="none" selected>category</option>
+              {{#each category}}
+                <option>{{this.category}}</option>
+              {{/each}}
+            </select>
+          </div>
+          {{!-- <div class="col"> --}}
+            <!-- category -->
+            {{! <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Sub-Category" name="category"> }}
+            {{! <select class="form-control">
+            <option>Adidas</option>
+            <option>Nike</option>
+            <option>Puma</option>
+            </select> }}
+            {{!-- <select name="Subcategory" class="form-control">
+              <option value="none" selected>Sub-category</option>
+              {{#each subcategory}}
+                <option>{{this.Sub_category}}</option>
+              {{/each}}
+            </select>
+          </div> --}}
+        </div>
+        <div class="form-row mb-4  d-flex">
+          <div class="col me-2">
+            <!-- Color -->
+            <input
+              type="text"
+              id="defaultRegisterFormLastName"
+              class="form-control"
+              placeholder="Color"
+              name="color"
+              required
+            />
+          </div>
+
+          <div class="col">
+            <!-- sub category -->
+            <input
+              type="text"
+              id="defaultRegisterFormLastName"
+              class="form-control"
+              placeholder="Stock"
+              name="stock"
+              required
+            />
+          </div>
+        </div>
+        <textarea
+          type="text"
+          id="defaultRegisterFormEmail"
+          class="form-control mb-4"
+          placeholder="Description"
+          name="description"
+          required
+        ></textarea>
+        <div class="form-row mb-6  d-flex">
+          <div class="">
+            <input class="form-control" name="file" type="file" id="formFileMultiple" style="width: 40rem;" multiple />
+            {{!-- <input
+              type="file"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="image"
+              name="file"
+              multiple 
+              
+            /> --}}
+          </div>
+          {{!-- <div class="col">
+            <!-- Color -->
+            <input
+              type="file"
+              id="defaultRegisterFormLastName"
+              class="form-control"
+              placeholder="image"
+              name="image2"
+            />
+          </div> --}}
+        </div>
+        {{!-- <div class="form-row mb-4  d-flex">
+          <div class="col me-2">
+            <!-- price -->
+            <input
+              type="file"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="image"
+              name="image3"
+            />
+          </div>
+          <div class="col">
+            <!-- Color -->
+            <input
+              type="file"
+              id="defaultRegisterFormLastName"
+              class="form-control"
+              placeholder="image"
+              name="image4"
+            />
+          </div>
+        </div> --}}
+        {{! <button class="btn btn-info my-4 btn-block" type="submit">Submit</button> }}
+        <input
+          type="submit"
+          class="btn btn-info my-4 btn-bloc k"
+          style="width: 100%;"
+        />
+
+      </form>
+    </div>
+    <!-- Default form register -->
+
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"
+    ></script>
+
+  </body>
+</html>

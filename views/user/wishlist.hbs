@@ -1,0 +1,166 @@
+
+
+	<!-- Title Page -->
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/user/images/wishlist.jpg);">
+		<h2 class="l-text2 t-center">
+			wishlist
+		</h2>
+	</section>
+
+	<!-- Cart -->
+	{{#if wishlist.products}}
+	<section class="cart bgwhite p-t-70 p-b-100">
+		<div class="container">
+			<!-- Cart item -->
+			<div class="container-table-cart pos-relative">
+				<div class="wrap-table-shopping-cart bgwhite">
+					<table class="table-shopping-cart">
+						<tr class="table-head">
+							<th class="column-1">Image</th>
+							<th class="column-2">Product</th>
+							<th class="column-3">Price</th>
+							<th class="column-4"></th>
+							<th class="column-5"></th>
+
+
+						</tr>
+                    {{#each wishlist.products}}
+						<tr class="table-row">
+							
+							<td class="column-1">
+								<div class="cart-img-product b-rad-4 o-f-hidden">
+									 <img src="data:{{pro_Id.Image.0.contentType}};base64,{{pro_Id.Image.0.imageBase64}}" alt="">
+								</div>
+							</td>
+							<td class="column-2">{{pro_Id.productName}}</td>
+							<td class="column-3">{{pro_Id.Price}}</td>   
+							{{!-- <td class="column-5"><button><i class="bi bi-trash"></i></button></td> --}}
+                            {{!-- <td class="column-5"><a href="/deletewishlist/{{pro_Id._id}}"><i class="bi bi-trash"></i></a></td> --}}
+							<td class="column-4"><button onclick="removeProductforwishlist('{{pro_Id._id}}')"><i class="bi bi-trash"></i></button></td>
+							{{!-- <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10"> --}}
+								<!-- Button -->
+								<td >
+								<button onclick="addedTocart('{{pro_Id._id}}')"class="btn flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" style="width:150px;">
+									Add to Cart
+								</button>
+								
+							{{!-- </div> --}}
+						</tr>
+						{{/each}}
+ 
+						
+					</table>
+				</div>
+			</div>
+
+		
+
+			
+		</div>
+	</section>
+{{else}}
+
+<section class="cart bgwhite p-t-70 p-b-100">
+	<div class="container">
+        <div class="card m-auto text-center" style="width: 20rem; border:0px">
+  			<img src="/user/images/clipart129459.png" class="card-img-top  m-auto" style="width: 6rem;" alt="...">
+  				<div class="card-body">
+    <h5 class="card-title font-weight-bold">Your wishlist is Empty</h5>
+    <p class="card-title font-weight-bold" >Add something to make me happy :)</p>
+    <a href="/" class="btn btn-primary">continue shopping</a>
+  </div>
+</div>
+
+		</div>
+</section>
+	{{/if}}
+	
+
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection -->
+	<div id="dropDownSelect1"></div>
+	<div id="dropDownSelect2"></div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.17/sweetalert2.min.js"></script> --}}
+{{!-- popep --}}
+<script>
+    // delete popup
+    function removeProductforwishlist(proId) {
+					Swal.fire({
+						title: 'Are you sure?',
+						text: "You won't be able to revert this!",
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#3085d6',
+						cancelButtonColor: '#d33',
+						confirmButtonText: 'Yes, delete it!'
+					}).then((result) => {
+						if (result.isConfirmed) {
+							
+							  
+								removeProductforwis()
+							
+						}
+					})
+ 
+
+		function removeProductforwis() {
+			alert(proId)
+         $.ajax({
+            url: "/deletewishlist",
+            data: {
+              proId: proId,
+            },
+            method: "post",
+            success: (Response) => {
+              if (Response) {
+                {{!-- alert('product removed from cart') --}}
+                location.reload()
+              }
+            }
+          })     
+				}
+		}
+    </script>
+
+
+
+
+
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/user/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/user/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/user/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="/user/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="/user/vendor/select2/select2.min.js"></script>
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect2')
+		});
+	</script>
+<!--===============================================================================================-->
+	{{!-- <script src="/user/js/main.js"></script>
+
+</body>
+</html> --}}

@@ -1,0 +1,192 @@
+
+<body class="animsition">
+
+	<!-- Header -->
+	<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="#" class="topbar-social-item fa fa-facebook"></a>
+					<a href="#" class="topbar-social-item fa fa-instagram"></a>
+					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+				</div>
+
+				<span class="topbar-child1">
+					Free shipping for standard order over 10000
+				</span>
+
+				<div class="topbar-child2">
+					<span class="topbar-email">
+						fashe@example.com
+					</span>
+
+					<div class="topbar-language rs1-select2">
+						<select class="selection-1" name="time">
+							<option>USD</option>
+							<option>EUR</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="/" class="logo">
+					<img src="/user/images/icons/shoeKartlogo.png" alt="IMG-LOGO">
+
+				</a> 
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+							<li>
+								<a href="index.html">Home</a>
+								
+							</li>
+
+							<li>
+								<a href="/shop">Shop</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+				
+					 {{#if user}}
+						  <ul class="main_menu">
+							<li>
+								 <a href="#" class="header-wrapicon1 dis-block">
+						           <img src="/user/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					             </a> 
+								 
+								<ul class="sub_menu2">
+									<li><a href="/userprofile">My profile</a></li>
+									<li><a href="/allorders">Orders</a></li>
+									<li><a href="/wishlist">wishlist</a></li>
+									<li><a href="/logout">logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					{{else}}
+					<a href="/Login" class="header-wrapicon1 dis-block">
+						<img src="/user/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					</a>
+					{{/if}}
+
+					<span class="linedivide1"></span>
+
+					<div class="header-wrapicon2">
+						<a href="/cart"><img src="/user/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON"></a>
+						<span class="header-icons-noti" id="cart-count">{{cartcount}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<!-- Logo moblie -->
+			<a href="index.html" class="logo-mobile">
+				<img src="/user/images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					 {{#if user}}
+						  <ul class="main_menu">
+							<li>
+								 <a href="#" class="header-wrapicon1 dis-block">
+						           <img src="/user/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					             </a> 
+								 
+								<ul class="sub_menu2">
+										<li><a href="/userprofile">My profile</a></li>
+									<li><a href="/allorders">Orders</a></li>
+									<li><a href="/wishlist">wishlist</a></li>
+									<li><a href="/logout">logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					{{else}}
+					<a href="/Login" class="header-wrapicon1 dis-block">
+						<img src="/user/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					</a>
+					{{/if}}
+
+					<span class="linedivide2"></span>
+
+					<div class="header-wrapicon2">
+						<a href="/cart"><img src="/user/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						<span class="header-icons-noti" id="cart-count">{{cartcount}}</span>
+						</a>
+
+						
+					</div>
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu" >
+			<nav class="side-menu">
+				<ul class="main-menu">
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							Free shipping for standard order over 10000
+						</span>
+					</li>
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+							<span class="topbar-email">
+								fashe@example.com
+							</span>
+
+							<div class="topbar-language rs1-select2">
+								<select class="selection-1" name="time">
+									<option>USD</option>
+									<option>EUR</option>
+								</select>
+							</div>
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<a href="#" class="topbar-social-item fa fa-facebook"></a>
+							<a href="#" class="topbar-social-item fa fa-instagram"></a>
+							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+						</div>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="index.html">Home</a>
+				
+						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/shop">Shop</a>
+					</li>
+
+				
+				</ul>
+			</nav>
+		</div>
+	</header>
