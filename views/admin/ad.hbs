@@ -309,10 +309,11 @@
                         <div
                           class="text-xs font-weight-bold text-success text-uppercase mb-1"
                         >
-                          Earnings (Annual)</div>
+                          Total Earnings</div>
                         <div
                           class="h5 mb-0 font-weight-bold text-gray-800"
-                        >$215,000</div>
+                        >
+                        <H6 id="totalAmountPaid"></H6></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -374,7 +375,7 @@
                           Total Order</div>
                         <div
                           class="h5 mb-0 font-weight-bold text-gray-800"
-                        >{{OrderCount}}</div>
+                        ><H6 id="totalOrder"></H6></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -391,43 +392,21 @@
 
               <!-- Area Chart -->
               <div class="col-xl-8 col-lg-7">
-                <div class="card shadow mb-4">
+                <div class="card shadow">
                   <!-- Card Header - Dropdown -->
                   <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                   >
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings
-                      Overview</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      This Week Earnings</h6>
                     <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
+                    
                     </div>
                   </div>
                   <!-- Card Body -->
-                  <div class="card-body">
+                  <div class="card-body mb-3">
                     <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
+                      <canvas id="mychart"></canvas>
                     </div>
                   </div>
                 </div>
@@ -440,60 +419,24 @@
                   <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
                   >
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue
-                      Sources</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Most sold products</h6>
                     <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
+                     
                     </div>
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
-                      <canvas id="myPieChart"></canvas>
+                      <canvas id="brand"></canvas>
                     </div>
-                    <div class="mt-4 text-center small">
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i>
-                        Direct
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i>
-                        Social
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i>
-                        Referral
-                      </span>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Content Row -->
-            <div class="row">
+            {{!-- <div class="row">
 
               <!-- Content Column -->
               <div class="col-lg-6 mb-4">
@@ -635,11 +578,11 @@
                   </div>
                 </div>
 
-              </div>
+              </div> --}}
 
-              <div class="col-lg-6 mb-4">
+              {{!-- <div class="col-lg-6 mb-4"> --}}
 
-                <!-- Illustrations -->
+                {{!-- <!-- Illustrations -->
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6
@@ -689,8 +632,8 @@
                   </div>
                 </div>
 
-              </div>
-            </div>
+              </div> --}}
+            {{!-- </div> --}}
 
           </div>
           <!-- /.container-fluid -->
@@ -753,6 +696,92 @@
         </div>
       </div>
     </div>
+
+{{!-- <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+        async function forHome(){ 
+    var totalAmount = []
+    var totalDate = []
+    console.log('success1');
+    $.ajax({
+        url:'/admin/getData',
+        method:'post',
+        success:(response)=>{
+            document.getElementById('totalOrder').innerHTML=response.orderCount
+            document.getElementById('totalAmountPaid').innerHTML='Rs '+response.totalArray
+            {{!-- document.getElementById('totalAmountRefund').innerHTML='Rs '+response.totalAmountRefund
+            document.getElementById('revenue').innerHTML='Rs '+ (parseInt(response.totalAmountPaid)-parseInt(response.totalAmountRefund)) --}}
+
+            
+            
+console.log(totalAmount,'toatalAmout');
+
+            console.log(response,'reponse');
+            var ctx = document.getElementById('mychart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+            
+                // The data for our dataset
+                data: {
+                    labels:response.dateArray,
+                    datasets: [{
+                        label: "last week dataset",
+                        backgroundColor: 'rgb(128, 204, 255)',
+                        borderColor: 'rgb(128, 204, 255)',
+                        borderWidth:1,
+                        data:response.totalArray,
+                    }]
+                },
+            
+                // Configuration options go here
+                options: {
+                  tooltips:{
+                    mode:'index'
+                  },
+                  
+                }
+            });
+
+            var ctxs = document.getElementById('brand').getContext('2d');
+            var chart = new Chart(ctxs, {
+                // The type of chart we want to create
+                type: 'doughnut',
+            
+                // The data for our dataset
+                data: {
+                    labels:response.brandArray,
+                    datasets: [{
+                        label: "brand wise dataset",
+                        backgroundColor: ['rgb(168,114,154)','rgb(95,183,255)','rgb(255,63,108)','rgb(255,159,32)','rgb(102,191,97)','rgb(167,215,197)'],
+                        borderColor:  ['rgb(168,114,154)','rgb(95,183,255)','rgb(255,63,108)','rgb(255,159,32)','rgb(102,191,97)','rgb(167,215,197)'],
+                        data:response.sumArray,
+                    }]
+                },
+            
+                // Configuration options go here
+                options: {
+                  tooltips:{
+                    mode:'index'
+                  }
+                }
+            });
+        }
+        })
+
+        
+ 
+}
+
+forHome()
+    </script>
+
+
+
+
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="/admin/vendor/jquery/jquery.min.js"></script>

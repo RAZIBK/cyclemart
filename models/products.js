@@ -6,7 +6,7 @@ const productSchema= new Schema({
     
     Description:String,
     mrp:Number,
-    Price:Number, 
+    Price:Number,  
     Discount:Number,  
     Color:String,
     Stoke:Number, 

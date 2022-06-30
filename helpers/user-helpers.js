@@ -410,7 +410,7 @@ return new Promise (async(resolve,reject)=>{
         if (proExist != -1) {  
           cartmodel  
             .updateOne(
-              { "products.pro_id": proId, user: userId },
+              { "products.pro_id": proId,'products.productName':product.productName, user: userId },
               {
                 $inc: { "products.$.quantity": 1 },
               }
@@ -420,12 +420,12 @@ return new Promise (async(resolve,reject)=>{
             });
           // resolve({error:'Product already in cart'})
 
-        } else {
+        } else { 
           await cartmodel
             .findOneAndUpdate(
               { user: userId },
               {
-                $push: { products: { pro_id: proId,price:product.Price } },
+                $push: { products: { pro_id: proId,productName:product.productName,price:product.Price } },
               }
             )
             .then(() => {
@@ -435,7 +435,7 @@ return new Promise (async(resolve,reject)=>{
       } else {
         const cartObj =new cartmodel( {
           user: userId,
-          products: { pro_id: proId,price:product.Price  },
+          products: { pro_id: proId,productName:product.productName,price:product.Price  },
         });
         await cartObj.save((err,result)=>{
           if(err){
@@ -779,7 +779,7 @@ console.log(data);
           console.log(data.coupon);
           obj = {};
           
-
+           
 
          const coupon =await couponmodel.findOne({ couponCode: data.coupon });
           if (coupon) {
@@ -803,7 +803,7 @@ console.log(data);
                     { couponCode: data.coupon },
                     { $push: { usedUsers: userId } }
                 );
-
+ 
                 await couponmodel.findOneAndUpdate(
                     { couponCode: data.coupon },
                     { $inc: { limit: -1 } }
@@ -846,15 +846,19 @@ console.log(data);
 
 
 placeOrder:(order,products,total,DeliveryCharges,netTotal,user)=>{
+  // console.log(order);
   return new Promise(async(resolve,reject)=>{
+total=parseInt(order.total)+parseInt(DeliveryCharges)
+    // console.log("======================");
+    // console.log(products.Brand);      
     let id=mongoose.Types.ObjectId(user._id);
   const status=order.paymentMethod==='cod'?'placed':'Cancelled'
 // const stock=await productData({_id:})
 
     const orderObj=await ordermodel({
       user_Id:user._id,
-      Total:order.total,
-      ShippingCharge:DeliveryCharges,
+      Total:total,
+      ShippingCharge:DeliveryCharges, 
       grandTotal:order.mainTotal,
       coupondiscountedPrice:order.discountedPrice,
       couponPercent:order.discoAmountpercentage,
@@ -865,6 +869,7 @@ placeOrder:(order,products,total,DeliveryCharges,netTotal,user)=>{
       paymentMethod:order.paymentMethod,
       ordered_on:new Date(),
       product:products.products,
+      // product:
       deliveryDetails:{ 
         name:order.fname, 
         number:order.number,
@@ -908,27 +913,88 @@ placeOrder:(order,products,total,DeliveryCharges,netTotal,user)=>{
   }, 
 
   cancelorder:(data)=>{
-    console.log("-----------------");
+    // console.log("-----------------");
     console.log(data);
+    order=mongoose.Types.ObjectId(data.orderId);
+    let quantity = parseInt(data.quantity);
+    console.log(parseInt(data.couponPercent));
+
+    discountPrice =
+    parseInt(data.subtotal) -((parseInt(data.couponPercent) * parseInt(data.subtotal)) /100).toFixed(0);
+
+    // console.log("==============================");
+    console.log(discountPrice);
     const status='Cancelled'
     return new Promise (async(resolve,reject)=>{
-      const cancelorder=await ordermodel.findOneAndUpdate({_id:data.orderId,'product.pro_id':data.proId},
+      const cancelorder=await ordermodel.updateMany({_id:data.orderId,'product.pro_id':data.proId},
       {
        $set:{
         "product.$.status":status,
         "product.$.orderCancelled":true,
+        
+      },
+    
+      $inc:{
+        grandTotal: -discountPrice,
+        "product.$.subtotal":-(parseInt(data.subtotal)),
+        // totalAmountToBePaid: -discountPrice,
+        reFund: discountPrice,
+        
       }
     },
     // { upsert: true }
     )
+
     await productData.findOneAndUpdate({_id:data.proId},
       {
         $inc:{
-          Stoke:1
+          Stoke:quantity
         }
-      })
-    resolve() 
- 
+      });
+
+      let products = await ordermodel.aggregate([
+        {
+          $match: { _id:order },
+        },
+
+        {
+          $project: {
+            _id: 0,
+            product: 1,
+          },
+        },
+        {
+          $unwind: "$product",
+          //   $unwind:'$deliveryDetails'
+        },
+        // {
+        //   $project: {
+        //     item: "$products.item",
+        //     quantity: "$products.quantity",
+        //     orderStatus: "$products.orderStatus",
+        //   },
+        // },
+        {
+          $match: { "product.orderCancelled": false },
+        },
+      ])
+  console.log(products);
+  if (products.length == 0) {
+    // console.log(
+    //   "agbDDDDDDDDDDDDDDDDDDDDDDDDDDDGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+    // );
+    await ordermodel.updateMany(
+        { _id: data.orderId},
+        {
+          $inc: { reFund: 40, grandTotal: -40 },
+        }
+      );
+    resolve({ status: true });
+  } else {
+    resolve({ status: true });
+  }
+  
+  // resolve() 
     })
   }, 
   
@@ -973,8 +1039,8 @@ placeOrder:(order,products,total,DeliveryCharges,netTotal,user)=>{
       const wishlist = await wishlistmodel
         .findOne({ user_id: userid._id })
         .populate("products.pro_Id")
-        .lean();
-      // console.log(wishlist);
+        .lean()
+     
       resolve(wishlist);
     });
   }, 
@@ -1064,24 +1130,27 @@ placeOrder:(order,products,total,DeliveryCharges,netTotal,user)=>{
       })
     },
     getAddress:(addressId,userid)=>{
+      console.log(addressId);
+      console.log(userid);
       return new Promise(async(resolve,reject)=>{
         const address=await userData.aggregate([
           {
               $match:{_id:userid}
           },
           {
-              $unwind:'$addresses'
+              $unwind:'$address'
           },
           {
-           $match:{'addresses._id':addressId}
+           $match:{'address._id':addressId}
           },
           {
               $project:{
-                  addresses:1,
+                address:1,
                   _id:0
               }
           }
           ])
+          resolve(address)
 
           // console.log(address[0].addresses);
 

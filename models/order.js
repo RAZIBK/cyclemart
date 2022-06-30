@@ -15,8 +15,8 @@ const orderSchema = new Mongoose.Schema({
       quantity: { type: Number, default: 1 },
       subtotal: { type: Number, default: 0 },
       status:{type:String,default:'Order placed'},
-      orderCancelled:{type:Boolean},
-
+      orderCancelled:{type:Boolean,default:false},
+      productName:{type:String}
 
     },
   ],
@@ -27,11 +27,11 @@ const orderSchema = new Mongoose.Schema({
       email: String,
       house: String,
       localplace: String,      
-      town: String,
+      town: String, 
       district: String,
       state: String, 
       pincode: Number,
-    }
+    }  
 ,
   Total:{type:Number,default:0},
   ShippingCharge:{type:Number},

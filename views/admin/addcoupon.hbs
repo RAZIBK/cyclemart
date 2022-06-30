@@ -259,56 +259,90 @@
             </ul>
 
           </nav>
-          <!-- End of Topbar -->
-    <!-- Default form register -->
-<div class="container mt-5 col-xl-6">
-<form class="text-center border border-light p-5" action="/admin/AddCoupon" method="post">
+                  <!-- End of Topbar -->
+            <!-- Default form register -->
+            <div class="container mt-5 col-xl-6">
+            <form class="text-center border border-light p-5" action="/admin/AddCoupon" method="post">
 
-    <p class="h4 mb-4">Add New Coupon</p>
+                <p class="h4 mb-4">Add New Coupon</p>
 
-    <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Coupon Name" name="couponName">
-        </div>
-    </div>
-        <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Coupon Code" name="CoupoCode">
-        </div>
-    </div>
-       <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="Limit" name="Limit">
-        </div>
-    </div>
-        <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="date" id="defaultRegisterFormFirstName" class="form-control" placeholder="Expire Date" name="ExpireDate">
-        </div>
-    </div>
-    <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="Discount" name="discount">
-        </div>
-    </div>
-   
-   
-   
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <!--  name -->
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Coupon Name" name="couponName">
+                    </div>
+                </div>
+                    <div class="form-row mb-4">
+                    <div class="col">
+                        <!--  name -->
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Coupon Code" name="CoupoCode">
+                    </div>
+                </div>
+                  <div class="form-row mb-4">
+                    <div class="col">
+                        <!--  name -->
+                        <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="Limit" name="Limit">
+                    </div>
+                </div>
+                    <div class="form-row mb-4">
+                    <div class="col">
+                        <!--  name -->
+                        <input type="date" id="defaultRegisterFormFirstName" class="form-control" placeholder="Expire Date" name="ExpireDate">
+                    </div>
+                </div>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <!--  name -->
+                        <input type="number" id="defaultRegisterFormFirstName" class="form-control" placeholder="Discount" name="discount">
+                    </div>
+                </div>
+              
+              
+              
 
-  
-    {{!-- <button class="btn btn-info my-4 btn-block" type="submit">Submit</button> --}}
-    <input type="submit" class="btn btn-info my-4 btn-bloc k " style="width: 100%;">
+              
+                {{!-- <button class="btn btn-info my-4 btn-block" type="submit">Submit</button> --}}
+                <input type="submit" class="btn btn-info my-4 btn-bloc k " style="width: 100%;">
 
-   
+              
 
-</form>
-</div>
-<!-- Default form register -->
+            </form>
+            </div>
+        <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end
+            your current session.</div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >Cancel</button>
+            <a class="btn btn-primary" href="/admin/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- MDB -->
 <script

@@ -190,21 +190,23 @@ body {
                           <span >₹ {{netTotal}}</span>
                         </a>
                       </li>
-                      <li>
-                        <a href="#">Shipping
-                          <span style="color:darkred">  ₹ {{DeliveryCharges}}</span>
-                        </a>
-                      </li>
-                       <li>
-                        <a href="#">Total 
-                          <span > ₹ {{grandTotal}}</span>
-                        </a>
-                      </li>
-                        <li>
+                    
+                         <li>
                         <a href="#">coupon discount
                           <span style="color:darkred" id="discount">- ₹ 0</span>
                         </a>
                       </li>
+                       {{!-- <li>
+                        <a href="#">Total 
+                          <span > ₹ {{grandTotal}}</span>
+                        </a>
+                      </li> --}}
+                        <li>
+                        <a href="#">Shipping
+                          <span style="color:darkred">  ₹ {{DeliveryCharges}}</span>
+                        </a>
+                      </li>
+                     
                       <li>
                         <a href="#">Grand Total  
                           <span id="totalwithCoupon"> ₹ {{grandTotal}}</span>
@@ -223,9 +225,9 @@ body {
 													<input type="text" class="form-control" name="coupon"
 														id="couponInput" autocapitalize="on" placeholder="Coupon Code" />
 													<input type="text" id="couponTotal" name="total" class="sizefull s-text7 p-l-22 p-r-22" 
-														value="{{grandTotal}}" hidden>
-                            	{{!-- <input type="text" id="amountToBePaid" name="total" class="sizefull s-text7 p-l-22 p-r-22" 
-														  value="{{grandTotal}}"> --}}
+														value="{{netTotal}}" hidden>
+                            	<input type="text" id="DeliveryCharges" name="DeliveryCharge" class="sizefull s-text7 p-l-22 p-r-22" 
+														  value="{{DeliveryCharges}}"hidden>
 
              </div>               	
 										
@@ -285,14 +287,14 @@ body {
               <div class="modal-body">
                 <div class="row ">
                   <div class="col-12 ">
-                  <input type="text" name="" id="{{this._id}}" value="{{this.coupon}}"  hidden >
+                  <input type="text" name="" id="{{this._id}}" value="{{this.couponCode}}"  hidden >
                 
                   <div class="card">
                     <div class="card-body">
                     <h1 class="card-title">{{this.couponCode}}</h1>
                     <p class="card-text">You Can get <span style="color:red"> {{this.discount}}%</span> Discount for this Coupon</p>
                     <p>Expired on : {{this.expirationTime}}</p>
-                    <button type="button" onclick="copyFunction('{{this.couponCode}}')" class="btn btn-primary copy-button">Copy</button>
+                    <button type="button" onclick="copyFunction('{{this._id}}')" class="btn btn-primary copy-button">Copy</button>
                     </div>
                   </div>
                   </div>
@@ -450,20 +452,23 @@ rzp1.open();
 			function couponApply() {
 				let couponCode = document.getElementById('couponInput').value
 				let couponTotal = document.getElementById('couponTotal').value
+        let DeliveryCharges=document.getElementById('DeliveryCharges').value
         document.getElementById('couponName').value=couponCode
 		
 				$.ajax({
 					url: '/couponApply',
 					data: {
 						coupon: couponCode,
-						total: couponTotal
+						total: couponTotal,
+            DeliveryCharges:DeliveryCharges
 					},
 					method: 'post',
 					success: (response) => {
 						if (response.couponSuccess) {  
 							let oldTotal =parseInt(document.getElementById('couponTotal').value)
-							let discount = oldTotal - parseInt(response.total)
-              alert(response.discountpers)
+              {{!-- alert(response.total) --}}
+							let discount = oldTotal - parseInt(response.total)+parseInt(DeliveryCharges)
+              {{!-- alert(response.discountpers) --}}
               let discountpercentag=parseInt(response.discountpers)
               document.getElementById('totalwithCoupon').innerHTML = '₹' + response.total
               document.getElementById('discountedPrice').value = discount

@@ -45,7 +45,7 @@
 			<span>Total</span><span style="color: black;">₹ {{orderProducts.[0].subtotal}}</span>
 		</div>
 		{{#if orderProducts.cancel }}
-		<button class="btn btn-danger" onclick="cancelOrder('{{orderProducts.[0]._id}}','{{orderProducts.[0].item}}','{{orderProducts.[0].subtotal}}','{{orderProducts.[0].totalAmountToBePaid}}','{{orderProducts.[0].couponPercent}}','{{orderProducts.[0].reFund}}','{{proLength}}','{{orderCancelCount}}')">Cancel Order</button>
+		<button class="btn btn-danger" onclick="cancelOrder('{{orderProducts.[0]._id}}','{{orderProducts.[0].item}}','{{products.Prize}}','{{orderProducts.[0].totalAmountToBePaid}}','{{orderProducts.[0].couponPercent}}','{{orderProducts.[0].reFund}}','{{proLength}}','{{orderCancelCount}}')">Cancel Order</button>
 		{{!-- <a href="/cancel-orderProduct/{{orderProducts.[0].item}}/?orderId={{orderProducts.[0]._id}}&subtotal={{orderProducts.[0].subtotal}}&totalAmount={{orderProducts.[0].totalAmount}}" class="btn btn-danger">Cancel Order</a> --}}
 		{{!-- <div class="text-center ">
 			<form action="/cancel-order" method="post">

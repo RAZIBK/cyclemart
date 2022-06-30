@@ -57,6 +57,47 @@ router.get("/adminhome",veryfyadminlogin,async function (req, res, next) {
   res.render("admin/ad", { OrderCount,ProductCount,layout: false, admin });
 });
 
+router.post('/getData', async (req, res) => {
+  console.log("================================================================----------");
+  console.log(req.body, 'req.body');
+  const date = new Date(Date.now());
+  const month = date.toLocaleString("default", { month: "long" });
+  adminhelpers.salesReport(req.body).then((data) => {
+
+    let pendingAmount = data.pendingAmount
+    let salesReport = data.salesReport
+    let brandReport = data.brandReport
+    let orderCount = data.orderCount
+    let totalAmountPaid = data.totalAmountPaid
+    // let totalAmountRefund = data.totalAmountRefund
+
+    let dateArray = [];
+    let totalArray = [];
+    // console.log(salesReport);
+    salesReport.forEach((s) => {
+      dateArray.push(`${month}-${s._id} `);
+      totalArray.push(s.total);
+    })
+    let brandArray = [];
+    let sumArray = [];
+    brandReport.forEach((s) => {
+      brandArray.push(s._id);
+      sumArray.push(s.totalAmount);
+    });
+    console.log("", brandArray);
+    // console.log("", sumArray);
+    // console.log("", dateArray);
+    console.log("", totalArray);
+    res.json({ dateArray, totalArray,brandArray, sumArray, orderCount, totalAmountPaid, pendingAmount })
+  })
+})
+
+
+
+
+
+
+
 router.get("/usermangement",veryfyadminlogin, (req, res) => {
   adminhelpers.getallusers().then((user) => {
     console.log(user);

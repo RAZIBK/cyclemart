@@ -35,9 +35,9 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <ul
+      <!-- Sidebar -->
+      <ul
         class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
         id="accordionSidebar"
       >
@@ -261,29 +261,66 @@
 
           </nav>
           <!-- End of Topbar -->
-    <!-- Default form register -->
-<div class="container mt-5 col-xl-6">
-<form class="text-center border border-light p-5" action="/admin/addBrandname" method="post" enctype="multipart/form-data">
-    <p class="h4 mb-4">Enter New Brand Name</p>
-    <div class="form-row mb-4">
-        <div class="col">
-            <!--  name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Brand Name" name="BrandName" required>
-        </div>
-    </div>
-         <div class="form-row mb-4">
-        <div class="col"> <input
-              type="file"
-              id="defaultRegisterFormLastName"
-              class="form-control"
-              placeholder="image"
-              name="image1"
-            /></div>
-            </div>
-    {{!-- <button class="btn btn-info my-4 btn-block" type="submit">Submit</button> --}}
+
+                         <!-- Default form register -->
+            <div class="container mt-5 col-xl-6">
+            <form class="text-center border border-light p-5" action="/admin/addBrandname" method="post" enctype="multipart/form-data">
+                <p class="h4 mb-4">Enter New Brand Name</p>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <!--  name -->
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Brand Name" name="BrandName" required>
+                    </div>
+                </div>
+                    <div class="form-row mb-4">
+                    <div class="col"> <input
+                          type="file"
+                          id="defaultRegisterFormLastName"
+                          class="form-control"
+                          placeholder="image"
+                          name="image1"
+                        /></div>
+                        </div>
+                            {{!-- <button class="btn btn-info my-4 btn-block" type="submit">Submit</button> --}}
     <input type="submit" class="btn btn-info my-4 btn-bloc k " style="width: 100%;">
-</form>
-</div>
+                      </form>
+                      </div>
+
+                       <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end
+            your current session.</div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >Cancel</button>
+            <a class="btn btn-primary" href="/admin/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 <!-- Default form register -->
 <!-- MDB -->
 <script
