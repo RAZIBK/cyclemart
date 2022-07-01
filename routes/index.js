@@ -186,7 +186,7 @@ router.get("/address-page",veryfylogin, async (req, res) => {
 
 router.get("/addAddress",veryfylogin, (req, res) => {
   let user = req.session.user;
-  res.render("user/addaaddress", { user });
+  res.render("user/addaddress", { user });
 });
 
 // router.post("/addAddress/:id", (req, res) => {
