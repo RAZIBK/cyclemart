@@ -186,14 +186,14 @@ router.get("/address-page",veryfylogin, async (req, res) => {
 
 router.get("/addAddress",veryfylogin, (req, res) => {
   let user = req.session.user;
-  res.render("user/addAddress", { user });
+  res.render("user/addaaddress", { user });
 });
 
-router.post("/addAddress/:id", (req, res) => {
-  userHelper.addAddress(req.params.id, req.body).then((response) => {
-    res.redirect("/address-page");
-  });
-});
+// router.post("/addAddress/:id", (req, res) => {
+//   userHelper.addAddress(req.params.id, req.body).then((response) => {
+//     res.redirect("/address-page");
+//   });
+// });
 router.get("/deleteAddress/:id", (req, res) => {
   userHelper.deleteAddress(req.params.id, req.session.user).then((response) => {
     res.redirect("/address-page");
