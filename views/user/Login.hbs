@@ -1,132 +1,62 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta name="description"
-			content="" />
-		<meta name="viewport"
-			content="width=device-width,
-					initial-scale=1" />
-		<link rel="stylesheet" href="/stylesheets/loginpage.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+					initial-scale=1"
+    />
+    <link rel="stylesheet" href="/stylesheets/loginpage.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"
+    ></script>
 
+  </head>
+  <body>
+    <div class="gfg-div">
+      <form action="/login" method="post" id="forms">
+        <div class="gfg-logo"></div>
+        <div class="gfg-title">CycleMart</div>
+        <div class="gfg-input-fields">
+          <div class="gfg-email">
+            <input type="email" placeholder="Email" name="email" />
+          </div>
+          <div class="gfg-password">
+            <input type="password" placeholder="Password" name="password" />
+          </div>
+          <p style="color: red;">{{err}}</p>
+          <div class="gfg-link">
+            <a href="/forgetpass" style="color:rgb(0, 127, 170);">Forgot
+              password?</a></div>
+        </div>
+        <button class="gfg-button">Signin</button>
+        <div class="gfg-link"><a href="#"></a>
+          <a href="/signup">New to CyclemMart? Create an account</a></div>
+      </form>
+    </div>
 
-		<script
-              src="https://code.jquery.com/jquery-3.2.1.js"
-              integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-              crossorigin="anonymous"></script>
-              {{!-- <link rel='stylesheet' href='/stylesheets/style.css' /> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
-		
-	{{!-- <style></style> --}}
-	</head>
-	<body>
-		<div class="gfg-div">
-			<form action="/login" method="post" id="forms">
-			<div class="gfg-logo"></div>
-			<div class="gfg-title">CycleMart</div>
-			{{!-- <div class="gfg-sub-title">
-			Neumorphism Login Form
-		</div> --}}
-	
-			<div class="gfg-input-fields">
-				<div class="gfg-email">
-					{{!-- <svg fill="#999" viewBox="0 0 1024 1024">
-						<path
-							class="path1"
-							d=
-"M896 307.2h-819.2c-42.347 0-76.8 34.453-76.8 76.8v460.8c0
-42.349 34.453 76.8 76.8 76.8h819.2c42.349 0 76.8-34.451
-76.8-76.8v-460.8c0-42.347-34.451-76.8-76.8-76.8zM896
-358.4c1.514 0 2.99 0.158 4.434 0.411l-385.632 257.090c-14.862
-9.907-41.938 9.907-56.802 0l-385.634-257.090c1.443-0.253
-2.92-0.411 4.434-0.411h819.2zM896 870.4h-819.2c-14.115
-0-25.6-11.485-25.6-25.6v-438.566l378.4 252.267c15.925
-10.618 36.363 15.925 56.8 15.925s40.877-5.307
-56.802-15.925l378.398-252.267v438.566c0 14.115-11.485
-25.6-25.6 25.6z"
-						></path>
-					</svg> --}}
-					<input type="email"
-						placeholder="Email" name="email"/>
-				</div>
-				<div class="gfg-password">
-					{{!-- <svg fill="#999"
-						viewBox="0 0 1024 1024">
-						<path
-							class="path1"
-							d=
-"M742.4 409.6h-25.6v-76.8c0-127.043-103.
-357-230.4-230.4-230.4s-230.4 103.357-230.4
-230.4v76.8h-25.6c-42.347 0-76.8 34.453-76.8
-76.8v409.6c0 42.347 34.453 76.8 76.8 76.8h512c42.347
-0 76.8-34.453 76.8-76.8v-409.6c0-42.347-34.453-76.
-8-76.8-76.8zM307.2 332.8c0-98.811 80.389-179.2
-179.2-179.2s179.2 80.389 179.2 179.2v76.8h-358.4v-76.8zM768
-896c0 14.115-11.485 25.6-25.6 25.6h-512c-14.115 0-25.6-11.
-485-25.6-25.6v-409.6c0-14.115 11.485-25.6 25.6-25.6h512c14.
-115 0 25.6 11.485 25.6 25.6v409.6z"
-						></path>
-					</svg> --}}
-					<input type="password"
-						placeholder="Password" 
-						name="password"/>
-				</div>
-				<p style="color: red;">{{err}}</p>
-				<div class="gfg-link">
-			<a href="/forgetpass"  style="color:rgb(0, 127, 170);">Forgot password?</a></div>
-	
-			</div>
-
-			
-			<button class="gfg-button">Signin</button>
-			<div class="gfg-link"><a href="#"></a>
-			<a href="/signup">New to ShoeKart? Create an account</a></div>
-			</form>
-		</div>
-
-		<script>
-			
-			$(function(){
-				// First: Add with default messages
-				//$("#frm-add-data").validate();				
-
-				// Second: Change default messages
-				$("#forms").validate({
-					errorClass:'Errors',
-                	rules: { // to define rules
-                		password: {
-                			required: true,
-            				minlength: 4
-                		},
-                        
-                        email: {
-                        required: true,
-                        email: true
-                     },  
-                	},
-                    messages:{ // to define custom messages	
-                    	password: {
-				            required: "Please enter Password",
-				            minlength: "Enter minimum 4 digits"
-				        },
-                        email: {
-                            required:'Please enter valid Email ID',
-							email: "The email should be in the format: abc@domain.tld"
-						},
-					
-                    },
-                    submitHandler: function(form) {  
-                           if ($(form).valid()) 
-                               form.submit(); 
-                           return false; // prevent normal form posting
-                    }
-                });
-			});
-		</script>
-		    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-	</body>
+    <script>
+      $(function(){ // First: Add with default messages
+      //$("#frm-add-data").validate(); // Second: Change default messages
+      $("#forms").validate({ errorClass:'Errors', rules: { // to define rules
+      password: { required: true, minlength: 4 }, email: { required: true,
+      email: true }, }, messages:{ // to define custom messages password: {
+      required: "Please enter Password", minlength: "Enter minimum 4 digits" },
+      email: { required:'Please enter valid Email ID', email: "The email should
+      be in the format: abc@domain.tld" }, }, submitHandler: function(form) { if
+      ($(form).valid()) form.submit(); return false; // prevent normal form
+      posting } }); });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
+    ></script>
+  </body>
 </html>

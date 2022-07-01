@@ -15,8 +15,6 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-
-
 	<!--
 		CSS
 		============================================= -->
@@ -47,17 +45,6 @@
 						</ul>
 					</div>
 				</div>
-				{{!-- <div class="col-lg-4">
-					<div class="details_item">
-						<h4>Billing Address</h4>
-						<ul class="list">
-							<li><a href="#"><span>Street</span> : 56/8</a></li>
-							<li><a href="#"><span>City</span> : Los Angeles</a></li>
-							<li><a href="#"><span>Country</span> : United States</a></li>
-							<li><a href="#"><span>Postcode </span> : 36952</a></li>
-						</ul>
-					</div>
-				</div> --}}
 				<div class="col-lg-6">
 					<div class="details_item">
 						<h4>Shipping Address</h4>
@@ -94,8 +81,7 @@
 									<p> ₹ {{this.subtotal}}</p>
 								</td>
 							</tr>
-							{{/each}}
-						
+							{{/each}}		
 							<tr>
 								<td>
 									<h4>Shipping</h4>
@@ -117,8 +103,7 @@
 								<td>
 									<p> ₹ {{orderProducts.Total}}</p>
 								</td>
-							</tr>
-							
+							</tr>	
 							<tr>
 								<td>
 									<h4>Coupon Discount</h4>
@@ -146,10 +131,8 @@
 				</div>
 			</div>
 		</div>
+		<a href="/allorders"><button class="btn btn-success"> All orders</button></a>
 	</section>
-
-
-
 
 	<script src="/user/jskarma/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"

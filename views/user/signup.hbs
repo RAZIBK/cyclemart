@@ -1,135 +1,133 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>CycleMart-Signup</title>
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="stylesheets/nunito-font.css">
-	<!-- Main Style Css -->
-  <link rel="stylesheet" href="/stylesheets/loginpage.css">
-
-		<script
-              src="https://code.jquery.com/jquery-3.2.1.js"
-              integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-              crossorigin="anonymous"></script>
-              {{!-- <link rel='stylesheet' href='/stylesheets/style.css' /> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body class="form-v6">
-	<div class="page-content">
-		<div class="form-v6-content">
-			{{!-- <div class="form-left">
-				<img src="images/form -v6.jpg" alt="form">
-			</div> --}}
-			<form class="form-detail" id="signup-form"  action="/Signup" method="post">
-				<h2>Register Form</h2>
-				<div class="form-row">
-					<input type="text" name="name" id="full-name" class="input-text" placeholder="Your Name" required>
-				</div>
-				<div class="form-row">
-					<input type="text" name="email" id="your-email" class="input-text" placeholder="Email Address" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
-				</div>
-				<div class="form-row">
-					<input type="text" name="mobile" id="" class="input-text" placeholder="Phone Number" required>
-				</div>
-				<div class="form-row">
-					<input type="password" name="password" id="password" class="input-text" placeholder="Password" required>
-				</div>
-				<div class="form-row">
-					<input type="password" name="newpassword" id="password2" class="input-text" placeholder="Comfirm Password" required>
-				</div>
-				<div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
-                                    <br>
-				<p style="color: red;">{{err}}</p>
-				<div class="form-row-last">
-					<input type="submit" name="register" class="register" value="Register">
-				</div>
-                	<div class="gfg-link ">
-			<a href="Login">Already have an account? Log In »
+  <head>
+    <meta charset="utf-8" />
+    <title>CycleMart-Signup</title>
+    <!-- Mobile Specific Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="stylesheets/nunito-font.css" />
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="/stylesheets/loginpage.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"
+    ></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+  </head>
+  <body class="form-v6">
+    <div class="page-content">
+      <div class="form-v6-content">
+        <form
+          class="form-detail"
+          id="signup-form"
+          action="/Signup"
+          method="post"
+        >
+          <h2>Register Form</h2>
+          <div class="form-row">
+            <input
+              type="text"
+              name="name"
+              id="full-name"
+              class="input-text"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <input
+              type="text"
+              name="email"
+              id="your-email"
+              class="input-text"
+              placeholder="Email Address"
+              required
+              pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+            />
+          </div>
+          <div class="form-row">
+            <input
+              type="text"
+              name="mobile"
+              id=""
+              class="input-text"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="input-text"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <input
+              type="password"
+              name="newpassword"
+              id="password2"
+              class="input-text"
+              placeholder="Comfirm Password"
+              required
+            />
+          </div>
+          <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
+          <br />
+          <p style="color: red;">{{err}}</p>
+          <div class="form-row-last">
+            <input
+              type="submit"
+              name="register"
+              class="register"
+              value="Register"
+            />
+          </div>
+          <div class="gfg-link">
+            <a href="Login">Already have an account? Log In »
             </a></div>
-			</form>
-            
-		</div>
-         
-	</div>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"
+    ></script>
 
+    <script>
+      $(document).ready(function(){ $("#signup-form").validate({
+      errorClass:"err", rules:{ name:{ required:true, minlength:4, maxlength:15,
+      namevalidation:true }, mobile:{ required:true, minlength:10, maxlength:15
+      }, email:{ required:true, email:true }, password:{ required:true,
+      minlength:5,
+      {{! strongePassword:true }}
 
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-
-		<script>
-        $(document).ready(function(){
-    $("#signup-form").validate({
-        errorClass:"err",
-     rules:{
-        name:{
-            required:true,
-            minlength:4,
-            maxlength:15,
-            namevalidation:true
-        },
-        
-         mobile:{
-            required:true,
-            minlength:10,
-            maxlength:15
-        },
-        email:{
-            required:true,
-            email:true
-        },
-
-        password:{
-            required:true,
-            minlength:5,
-            {{!-- strongePassword:true --}}
-           
-        },
-        newpassword:{
-            required:true,
-            equalTo:"#password"
-        }
-     },
-     messages:{
-         name:{
-             required:"Please enter your name",
-             minlength:"At least 4 characters required",
-             maxlength:"Maximum 15 characters are allowed"
-         },
-         
-         mobile:{
-            required:"Please enter your phone number",
-            minlength:"Enter 10 numbers",
-            maxlength:"Number should be less than or equal to 15 numbers"
-           },
-         email:{
-             required:"Please enter your email id",
-             email:"Enter a valid email"
-         },
-        //  password:"Please enter your password",
-         newpassword:{
-             required:"confirm password",
-             equalTo:"Password doesn't matches"
-         }
-     }
-    })
-    $.validator.addMethod("namevalidation", function(value, element) {
-            return /^[A-Za-z]+$/.test(value);
-    },
-      "Sorry,only alphabets are allowed"
-   );
-   $.validator.addMethod("strongePassword", function(value,element) {
-    return /^[A-Za-z0-9\d=!\-@._]$/.test(value) && /[a-z]/.test(value) && /\d/.test(value) && /[A-Z]/.test(value);
-    },
-    "The password must contain at least 1 number,1 lower case letter, and 1 upper case letter"
-    ); 
-  
-})
-
-
+      }, newpassword:{ required:true, equalTo:"#password" } }, messages:{ name:{
+      required:"Please enter your name", minlength:"At least 4 characters
+      required", maxlength:"Maximum 15 characters are allowed" }, mobile:{
+      required:"Please enter your phone number", minlength:"Enter 10 numbers",
+      maxlength:"Number should be less than or equal to 15 numbers" }, email:{
+      required:"Please enter your email id", email:"Enter a valid email" }, //
+      password:"Please enter your password", newpassword:{ required:"confirm
+      password", equalTo:"Password doesn't matches" } } })
+      $.validator.addMethod("namevalidation", function(value, element) { return
+      /^[A-Za-z]+$/.test(value); }, "Sorry,only alphabets are allowed" );
+      $.validator.addMethod("strongePassword", function(value,element) { return
+      /^[A-Za-z0-9\d=!\-@._]$/.test(value) && /[a-z]/.test(value) &&
+      /\d/.test(value) && /[A-Z]/.test(value); }, "The password must contain at
+      least 1 number,1 lower case letter, and 1 upper case letter" ); })
     </script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

@@ -139,23 +139,23 @@ let totalAmounts=await ordermodel.aggregate([
 
 console.log(totalAmounts);
 
-// let totalAmountRefund=await ordermodel.aggregate([
-//  {
-//    $match:{status:'placed'}
-//   },
-//  {
-//    $group:
-//    {
-//      _id: null,
-//      totalAmount: { $sum:'$amountToBeRefunded'
-//        }
+let totalAmountRefund=await ordermodel.aggregate([
+ {
+   $match:{status:'placed'}
+  },
+ {
+   $group:
+   {
+     _id: null,
+     totalAmount: { $sum:'$reFund'
+       }
 
      
-//    }
-//  }
-// ]).toArray()
+   }
+ }
+])
 
-console.log('5555555555555555555555555555555555555555555555555555555555555555555555');
+// console.log('5555555555555555555555555555555555555555555555555555555555555555555555');
 // console.log(totalAmountRefund);
 
 
@@ -165,7 +165,7 @@ response.salesReport=salesReport
 response.brandReport=brandReport
 response.orderCount=orderCount
 response.totalAmountPaid=totalAmounts.totalAmount
-// response.totalAmountRefund=totalAmountRefund.totalAmount
+response.totalAmountRefund=totalAmountRefund.totalAmount
 
 resolve(response)      
        })

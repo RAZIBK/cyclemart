@@ -109,7 +109,7 @@
           <div class="card-footer border-0 px-4 py-5 "
             style="background-color: #090908; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
-              paid: <span class="h2 mb-0 ms-2"> ₹ {{order.Total}}</span></h5>
+              paid: <span class="h2 mb-0 ms-2"> ₹ {{order.PaidAmount}}</span></h5>
           </div>
         </div>
       </div>
@@ -117,15 +117,6 @@
     </div>
   </div>
 </section>
-
-
-
-
-{{!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
-{{!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
-
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.17/sweetalert2.min.js"></script> --}}
-
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -153,8 +144,6 @@
 							})
 						}
 					})
-
-	
 					function Ordercancel() {
           $.ajax({
             url: '/cancel-order',
@@ -165,17 +154,14 @@
           totalAmount:totalAmount,
           couponPercent:couponPercent,
           reFund:reFund,
-          quantity:quantity,
-          
+          quantity:quantity,  
             },
             method: 'post',
             success: (response) => {
             {{!-- alert(response) --}}
               if (response.status) {
-                {{!-- alert(' Product Cancelled from Order') --}}
               location.reload()
               } else {
-            {{!-- alert("all Product Cancelled from Order") --}}
             {{!-- location.href = '/viewOrderProducts/' + orderId --}}
           }
             }

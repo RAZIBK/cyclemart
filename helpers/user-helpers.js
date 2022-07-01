@@ -31,7 +31,7 @@ const instance = new Razorpay({
 
 module.exports = {
   doSignup: (userDataa) => {
-    console.log(userDataa);
+    console.log(userDataa); 
     return new Promise(async (resolve, reject) => {
       // if (userDataa.password == userDataa.newpassword) {
         const user = await userData.findOne({ email: userDataa.email });
@@ -314,8 +314,8 @@ return new Promise (async(resolve,reject)=>{
         if(brandFilter && categoryFilter  ){
           let brandid=mongoose.Types.ObjectId(brandFilter);
           let categoryid=mongoose.Types.ObjectId(categoryFilter)
-          console.log(brandid);
-          console.log(categoryid);
+          // console.log(brandid);
+          // console.log(categoryid);
              result = await productData.aggregate([
                 {
                     $match:{Brand:brandid}
@@ -330,7 +330,7 @@ return new Promise (async(resolve,reject)=>{
                     $match:{Price:{$lt:price}}
                 }
             ])
-            console.log("1");
+            // console.log("1");
         } 
 
         else if(brandFilter  ){
@@ -344,8 +344,8 @@ return new Promise (async(resolve,reject)=>{
                 $match:{Price:{$lt:price}}
               }
             ])
-            console.log("2");
-            console.log(result);
+            // console.log("2");
+            // console.log(result);
             
           }
           else if(categoryFilter){
@@ -361,7 +361,7 @@ return new Promise (async(resolve,reject)=>{
                 $match:{Price:{$lt:price}}
             }
         ])
-        console.log("3");
+        // console.log("3");
       }
     
         else{
@@ -371,7 +371,7 @@ return new Promise (async(resolve,reject)=>{
                     $match:{Price:{$lt:price}}
                 }
             ])
-            console.log("4");
+            // console.log("4");
         }
         resolve(result)
     })
@@ -691,8 +691,8 @@ console.log(data);
   },
   DeliveryCharge:(amount)=>{
     return new Promise((resolve,reject)=>{
-        if(amount<1000){
-          resolve(40)
+        if(amount<10000){
+          resolve(500)
         }else{
           resolve(0)
         }
@@ -863,7 +863,7 @@ total=parseInt(order.total)+parseInt(DeliveryCharges)
       coupondiscountedPrice:order.discountedPrice,
       couponPercent:order.discoAmountpercentage,
       couponName:order.couponName,
-      // PaidAmount:order.mainTotal,
+      PaidAmount:order.mainTotal,
 
       payment_status:status, 
       paymentMethod:order.paymentMethod,
@@ -986,7 +986,7 @@ total=parseInt(order.total)+parseInt(DeliveryCharges)
     await ordermodel.updateMany(
         { _id: data.orderId},
         {
-          $inc: { reFund: 40, grandTotal: -40 },
+          $inc: { reFund: 500, grandTotal: -500 },
         }
       );
     resolve({ status: true });
@@ -1192,10 +1192,10 @@ total=parseInt(order.total)+parseInt(DeliveryCharges)
         hmac.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
         hmac=hmac.digest('hex')
         if(hmac==details['payment[razorpay_signature]']){
-          console.log("000000000000");
+          // console.log("000000000000");
           resolve()
         }else{
-          console.log("5555555555555555");
+          // console.log("5555555555555555");
           reject()
         }  
       })

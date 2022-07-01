@@ -18,9 +18,9 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
     ></script>
   </head>
-
   <body>
-    <div class="container height-100 d-flex justify-content-center align-items-center mt-5"
+    <div
+      class="container height-100 d-flex justify-content-center align-items-center mt-5"
     >
       <div class="position-relative">
         <div class="card p-2 text-center">
@@ -28,12 +28,8 @@
             <h6>Please enter the one time password
               <br />
               to verify your account</h6>
-            {{! <div>
-            <span>A code has been sent to</span>
-            <small>*******9897</small>
-          </div> }}
             <div>
-                <p style="margin-bottom: 0;">Please Enter your new password</p>
+              <p style="margin-bottom: 0;">Please Enter your new password</p>
               <input
                 class="m-2 text-center form-control rounded"
                 type="password"
@@ -42,7 +38,7 @@
               />
             </div>
             <div>
-                 <p style="margin-bottom: 0;">Please Enter your new password</p>
+              <p style="margin-bottom: 0;">Please Enter your new password</p>
               <input
                 class="m-2 text-center form-control rounded"
                 type="password"
@@ -56,24 +52,14 @@
             </div>
           </form>
         </div>
-        {{! <div class="card-2">
-          <div class="content d-flex justify-content-center align-items-center">
-            <span>Didn't get the code</span>
-            <a href="#" class="text-decoration-none ms-3">Resend(1/3)</a>
-          </div>
-        </div> }}
       </div>
     </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-
     <script>
       document.addEventListener("DOMContentLoaded", function(event) { function
       OTPInput() { const inputs = document.querySelectorAll('#otp > *[id]'); for
@@ -89,6 +75,5 @@
       } } }); } } OTPInput(); });
 
     </script>
-
   </body>
 </html>

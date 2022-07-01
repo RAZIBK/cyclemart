@@ -44,7 +44,7 @@ router.post("/adminlogin", (req, res) => {
       req.session.adminloggErr = err.msg;
       res.redirect("/admin");
     });
-});
+}); 
 
 router.get("/adminhome",veryfyadminlogin,async function (req, res, next) {
   let admin = req.session.admin;
@@ -58,7 +58,7 @@ router.get("/adminhome",veryfyadminlogin,async function (req, res, next) {
 });
 
 router.post('/getData', async (req, res) => {
-  console.log("================================================================----------");
+  // console.log("================================================================----------");
   console.log(req.body, 'req.body');
   const date = new Date(Date.now());
   const month = date.toLocaleString("default", { month: "long" });
@@ -69,7 +69,7 @@ router.post('/getData', async (req, res) => {
     let brandReport = data.brandReport
     let orderCount = data.orderCount
     let totalAmountPaid = data.totalAmountPaid
-    // let totalAmountRefund = data.totalAmountRefund
+    let totalAmountRefund = data.totalAmountRefund
 
     let dateArray = [];
     let totalArray = [];
@@ -88,7 +88,7 @@ router.post('/getData', async (req, res) => {
     // console.log("", sumArray);
     // console.log("", dateArray);
     console.log("", totalArray);
-    res.json({ dateArray, totalArray,brandArray, sumArray, orderCount, totalAmountPaid, pendingAmount })
+    res.json({totalAmountRefund, dateArray, totalArray,brandArray, sumArray, orderCount, totalAmountPaid, pendingAmount })
   })
 })
 

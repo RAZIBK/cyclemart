@@ -16,7 +16,7 @@ const veryfylogin = (req, res, next) => {
   } else {
     res.redirect("/Login");
   }
-};
+}; 
 let filterResult
 /* GET home page. */
 router.get("/", async (req, res, next) => {
@@ -390,7 +390,7 @@ router.get("/checkout-page", async (req, res) => {
       cartcount
     });
   }).catch((error)=>{
-    console.log("====================");
+    // console.log("====================");
     res.redirect('/') 
   })
   // console.log(AllCoupons);

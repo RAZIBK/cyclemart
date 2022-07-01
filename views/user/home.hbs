@@ -1,248 +1,237 @@
+<!-- Slide1 -->
+<section class="slide1">
+  <div class="wrap-slick1">
+    <div class="slick1">
+      {{#each Carouselimage}}
+        <div
+          class="item-slick1 item1-slick1"
+          style="background-image: url(/uploads/{{this.Image}});"
+        >
+          <div
+            class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170"
+          >
+            <span
+              class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
+              data-appear="fadeInDown"
+            >
+              {{this.Sub_heading}}
+            </span>
 
-	<!-- Slide1 -->
-	<section class="slide1">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				{{#each Carouselimage}}
-				<div class="item-slick1 item1-slick1" style="background-image: url(/uploads/{{this.Image}});">
-					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-							{{this.Sub_heading}}
-						</span>
+            <h2
+              class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37"
+              data-appear="fadeInUp"
+            >
+              {{this.CarouselHeading}}
+            </h2>
 
-						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							{{this.CarouselHeading}}
-						</h2>
+            <div
+              class="wrap-btn-slide1 w-size1 animated visible-false"
+              data-appear="zoomIn"
+            >
+              <!-- Button -->
+              <a
+                href="/shop"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4"
+              >
+                Shop Now
+              </a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+<!-- New Product -->
+<section class="newproduct bgwhite p-t-45 p-b-105">
+  <div class="container">
+    <div class="sec-title p-b-60">
+      <h3 class="m-text5 t-center">
+        NEW ARRIVALS
+      </h3>
+    </div>
+    <!-- Slide2 -->
+    <div class="wrap-slick2">
+      <div class="slick2">
+        {{#each product}}
+          <div class="item-slick2 p-l-15 p-r-15">
+            <!-- Block2 -->
+            <div class="block2">
+              <div
+                class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew"
+              >
+                {{!-- <img src="/uploads/{{this.Image.[0].image1}}" alt=""> --}}
+                <img
+                  src="data:{{this.Image.0.contentType}};base64,{{this.Image.0.imageBase64}}"
+                />
 
-						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
-							<!-- Button -->
-							<a href="/shop" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
-						</div>
-					</div>
-				</div>
-				{{/each}}
+                <div class="block2-overlay trans-0-4">
+                  {{! <a href="#"  }}
+                  <button
+                    onclick="addTowishlist('{{this._id}}')"
+                    class="block2-btn-addwishlist hov-pointer trans-0-4"
+                  >
+                    <i
+                      class="icon-wishlist icon_heart_alt"
+                      aria-hidden="true"
+                    ></i>
+                    <i
+                      class="icon-wishlist icon_heart dis-none"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                  <div class="block2-btn-addcart w-size1 trans-0-4">
+                    <!-- Button -->
+                    <button
+                      onclick="addTocart('{{this._id}}')"
+                      class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-				
+              <div class="block2-txt p-t-20">
+                <a
+                  href="/product-details/{{this._id}}"
+                  class="block2-name dis-block s-text3 p-b-5 font-weight-bold"
+                >
+                  {{this.productName}}
+                </a>
 
-			</div>
+                <span class="block2-price m-text6 p-r-5 font-weight-bold">
+                  ₹
+                  {{this.Price}}
+                </span>
+                <span
+                  class="block2-price m-text6 p-r-5 font-weight-lighter"
+                  style="color: #d3d3d3;"
+                >
+                  ₹
+                  <s>{{this.mrp}}</s>
+                </span>
+                <span
+                  class="block2-price p-r-5 font-weight-lighter"
+                  style="color: rgb(38, 165, 65); font-size: 15px;"
+                >
+                  {{this.Discount}}
+                  % off
+                </span>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="newproduct bgwhite p-t-45 p-b-105">
+  <div class="container">
+    <div class="sec-title p-b-60">
+      <h3 class="m-text5 t-center">
+       Brands
+      </h3>
+    </div>
+    <!-- Slide2 -->
+    <div class="wrap-slick2">
+      <div class="slick2">
+         {{!-- <div class="row"> --}}
+      {{#each brands}}
+ <div class="item-slick2 p-l-15 p-r-15 d-flex justify-content-around">
+            <!-- Block2 -->
+            <div class="block2">
+              {{!-- <div
+                class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew"
+              > --}}
+
+        <div class="col partner-col text-center mt-3">
+          <a href="/filterbrands/{{this._id}}">
+            <img
+              style="width: 300px; height: 102px;"
+              src="/uploads/{{this.Image}}"
+              class="img"
+              alt="Free html4 bootstrap 4 template"
+            />
+          </a>
+        </div>
 		</div>
-	</section>
+		{{!-- </div> --}}
+ </div>
+      {{/each}}
+    {{!-- </div> --}}
+      </div>
+    </div>
 
-	<!-- Banner -->
-	{{!-- <section class="banner bgwhite p-t-40 p-b-40">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-				
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="/user/images/banner-05.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Sunglasses
-							</a>
-						</div>
-					</div>
-					
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="/user/images/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-			
-				</div>
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="/user/images/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-				
-				</div>
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="/user/images/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-				
-				</div>
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="/user/images/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-		
-				</div>
-
-				
-			</div>
-		</div>
-	</section> --}}
-
-	<!-- New Product -->
-	<section class="newproduct bgwhite p-t-45 p-b-105">
-		<div class="container">
-			<div class="sec-title p-b-60">
-				<h3 class="m-text5 t-center">
-					NEW ARRIVALS
-				</h3>
-			</div>
-
-			<!-- Slide2 -->
-			<div class="wrap-slick2">
-				<div class="slick2">
-                     {{#each product}}
-					<div class="item-slick2 p-l-15 p-r-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								 {{!-- <img src="/uploads/{{this.Image.[0].image1}}" alt=""> --}}
-								 <img src="data:{{this.Image.0.contentType}};base64,{{this.Image.0.imageBase64}}">
-
-								<div class="block2-overlay trans-0-4">
-									{{!-- <a href="#"  --}}
-									<button onclick="addTowishlist('{{this._id}}')"
-									class="block2-btn-addwishlist hov-pointer trans-0-4">
-										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-									</button>
-
-									<div class="block2-btn-addcart w-size1 trans-0-4">
-										<!-- Button -->
-				
-									       <button onclick="addTocart('{{this._id}}')" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
-										
-									</div>
-								</div>
-							</div>
-
-							<div class="block2-txt p-t-20 ">
-								<a href="/product-details/{{this._id}}" class="block2-name dis-block s-text3 p-b-5 font-weight-bold">
-									{{this.productName}}
-								</a>
-
-								<span class="block2-price m-text6 p-r-5 font-weight-bold">
-									 ₹  {{ this.Price}}
-								</span>
-								<span class="block2-price m-text6 p-r-5 font-weight-lighter" style="color: #d3d3d3;">
-									 ₹ <s>{{this.mrp}}</s>
-								</span>
-								<span class="block2-price p-r-5 font-weight-lighter" style="color: rgb(38, 165, 65); font-size: 15px;">
-									{{this.Discount}} % off
-								</span>
-							</div>
-						</div>
-					</div>
-                    {{/each}}
-
-					
-				
-				</div>
-			</div>
-
-		</div>
-	</section>
-	<section class="banner2 bg5 p-t-55 p-b-55">
-		<div class="container">
-			<div class="row">
-
-			
-			{{#each brands}}
-		<div class="col partner-col text-center mt-3">
-			<a href="/filterbrands/{{this._id}}">
-				<img style="width: 300px; height: 102px;" src="/uploads/{{this.Image}}" class="img" alt="Free html4 bootstrap 4 template">
-				{{!-- <h6>lfslk</h6> --}}
-			</a>
-
-		</div>
-		{{/each}}
-		</div>
-		</div>
-	</section>
-
-	
-
-	<!-- Shipping -->
-	<section class="shipping bgwhite p-t-62 p-b-46">
-		<div class="flex-w p-l-15 p-r-15">
-			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
-				<h4 class="m-text12 t-center">
-					Free shipping for standard order over 10000
-				</h4>
-
-				 
-			</div>
-
-			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
-				<h4 class="m-text12 t-center">
-					30 Days Return
-				</h4>
-
-				<span class="s-text11 t-center">
-					Simply return it within 30 days for an exchange.
-				</span>
-			</div>
-
-			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
-				<h4 class="m-text12 t-center">
-					Store Opening
-				</h4>
-
-				<span class="s-text11 t-center">
-					Shop open from Monday to Sunday
-				</span>
-			</div>
-		</div>
-	</section>
+  </div>
+</section>
 
 
 
-	<!-- Back to top -->
-	<div class="btn-back-to-top bg0-hov" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
-		</span>
-	</div>
-
-	<!-- Container Selection1 -->
-	<div id="dropDownSelect1"></div>
 
 
+
+
+
+
+
+{{!-- <section class="banner2 bg5 p-t-55 p-b-55">
+  <div class="container">
+    <div class="sec-title p-b-60">
+      <h3 class="m-text5 t-center">
+        Brands
+      </h3>
+    </div>
+    <div class="row">
+      {{#each brands}}
+        <div class="col partner-col text-center mt-3">
+          <a href="/filterbrands/{{this._id}}">
+            <img
+              style="width: 300px; height: 102px;"
+              src="/uploads/{{this.Image}}"
+              class="img"
+              alt="Free html4 bootstrap 4 template"
+            />
+          </a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section> --}}
+<section class="shipping bgwhite p-t-62 p-b-46">
+  <div class="flex-w p-l-15 p-r-15">
+    <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+      <h4 class="m-text12 t-center">
+        Free shipping for standard order over 10000
+      </h4>
+    </div>
+
+    <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+      <h4 class="m-text12 t-center">
+        30 Days Return
+      </h4>
+      <span class="s-text11 t-center">
+        Simply return it within 30 days for an exchange.
+      </span>
+    </div>
+    <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+      <h4 class="m-text12 t-center">
+        Store Opening
+      </h4>
+      <span class="s-text11 t-center">
+        Shop open from Monday to Sunday
+      </span>
+    </div>
+  </div>
+</section>
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
+  <span class="symbol-btn-back-to-top">
+    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+  </span>
+</div>
+<!-- Container Selection1 -->
+<div id="dropDownSelect1"></div>
