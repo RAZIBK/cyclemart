@@ -7,7 +7,6 @@ const orderSchema = new Mongoose.Schema({
   couponName:{type:String},
   PaidAmount:{type:Number},
   reFund:{type:Number,default:0},
-  
   product: [
     { 
       pro_id: { type: Mongoose.Schema.Types.ObjectId, ref: "product" },
@@ -39,42 +38,6 @@ const orderSchema = new Mongoose.Schema({
   ordered_on: { type: Date },
   payment_status: { type: String },
 });
+
 const orderModel = Mongoose.model("order", orderSchema);
 module.exports = orderModel;
-
-
-
-
-
-
-
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-
-// const orderSchema = new Schema({
-//     userId:String,
-//       paymentMethod:String,
-//       product:Array,
-//       status:String,
-
-//       totalamount:String,
-//       orderdOn:{
-//         type:Date,
-//         default:Date.now
-//     },
-//     deliveryDetails:[{
-//         name:String,
-//         number:String,
-//         email:String,
-//         house:String,
-//         localplace:String,
-//         town:String,
-//         district:String,
-//         state:String,
-//         pincode:Number
-
-//       }],
-
-// });
-// const order = mongoose.model("order", orderSchema);
-// module.exports = order;

@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const moment = require("moment");
-
-// creating objectSchema
 
 const couponCodeSchema = new Schema({
     couponName: {
@@ -47,8 +44,6 @@ const couponCodeSchema = new Schema({
     }
        
 })
-
-// module.exports = mongoose.model("Coupon_Register",couponCodeSchema);
 
 const Coupon_Register=mongoose.model('Coupon_Register',couponCodeSchema)
 module.exports=Coupon_Register

@@ -35,20 +35,6 @@ const UserSchema= new Schema({
         mobile:String,
         locality:String,
     }],
-
-
-
-
-
-
-
-
-
-    // name:String,
-    // address:String,
-    // phonenumber:String,
-    // email:String,
-    // password:String
 })
 const user=mongoose.model('user',UserSchema)
 module.exports=user
