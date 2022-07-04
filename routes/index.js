@@ -191,6 +191,15 @@ router.get("/addAddress", veryfylogin, (req, res) => {
   res.render("user/addaddress", { user });
 });
 
+router.post("/addAddress", veryfylogin, (req, res) => {
+  let user = req.session.user;
+  userHelper.addAddress(req.body,user._id).then((response)=>{
+    console.log("dsugh");
+    res.redirect("/address-page");
+  })
+});
+
+
 router.get("/deleteAddress/:id", (req, res) => {
   userHelper.deleteAddress(req.params.id, req.session.user).then((response) => {
     res.redirect("/address-page");

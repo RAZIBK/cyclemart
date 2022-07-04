@@ -854,7 +854,8 @@ module.exports = {
     });
   },
 
-  addAddress: (userId, data) => {
+  addAddress: (data,userId) => {
+    console.log();
     return new Promise(async (resolve, reject) => {
       const user = userData.findOne({ _id: userId });
       await userData.findOneAndUpdate(
