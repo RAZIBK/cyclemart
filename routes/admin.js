@@ -105,7 +105,7 @@ router.get("/UnBlockuser/:id", (req, res) => {
   });
 });
 
-router.get("/addbrands", veryfyadminlogin, (req, res) => {
+router.get("/addbrands", (req, res) => {
   res.render("admin/AddBrands", { layout: false });
 });
 router.post(
@@ -123,7 +123,7 @@ router.post(
       });
   }
 );
-router.get("/addcategory", veryfyadminlogin, (req, res) => {
+router.get("/addcategory", (req, res) => {
   adminhelpers.getallcategory().then((allcategory) => {
     res.render("admin/addcategory", { allcategory, layout: false });
   });

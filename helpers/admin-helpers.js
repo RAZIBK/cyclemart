@@ -303,24 +303,27 @@ module.exports = {
       // const sub_categorydata = await Sub_Category.findOne({
       //   Sub_category: data.Subcategory,
       // })
+      console.log(data.category);
       const branddata = await brands.findOne({ BrandName: data.brand });
       const categorydat = await category.findOne({ category: data.category });
+      console.log(categorydat);
       const newproduct = await productData({
         productName: data.productName,
         Description: data.description,
         mrp: data.Mrp,
         Price: Prize,
-        Discount: data.Discount,
+        Discount: data.Discount, 
         Color: data.color,
         Stoke: data.stock,
-        size: data.size,
+        // size: data.size,
         // Sub_Category: sub_categorydata._id,
         Brand: branddata._id,
         Category: categorydat._id,
         Image: imagesData,
       });
       await newproduct.save(async (err, res) => {
-        if (err) {
+        if (err) { 
+          resolve()
         }
         resolve({ data: res, msg: "success" });
       });
