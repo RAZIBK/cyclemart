@@ -12,7 +12,17 @@ const adminHelpers = require("../helpers/admin-helpers");
 const moment = require("moment");
 const veryfylogin = (req, res, next) => {
   if (req.session.logedIn) {
-    next();
+    let userid=req.session.user._id
+    userHelper.userblock(userid).then((user)=>{
+      if(user.block !=true){
+        next();
+      }
+else{
+  req.session.logedIn=false
+  res.redirect('/Login')
+}
+
+    })
   } else {
     res.redirect("/Login");
   }
@@ -446,11 +456,12 @@ router.post("/verify-Payment", (req, res) => {
 });
 
 router.get("/viewOrderDetails", async (req, res) => {
-  userHelper.getorderProducts(req.session.orderId).then((response) => {
+  userHelper.getorderProducts(req.session.orderId).then(async(response) => {
     const orderProducts = response;
     const user = req.session.user;
+    cartcount = await userHelper.getcartcount(req.session.user._id);
     const ordered_on = moment(orderProducts.ordered_on).format("MMM Do YY");
-    res.render("user/order-success", { ordered_on, orderProducts, user });
+    res.render("user/order-success", { ordered_on, orderProducts, user,cartcount });
   });
 });
 

@@ -38,7 +38,7 @@
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <p class="text-muted mb-0 small"> 
-                      Status : <span style="color:orangered"> {{this.status}}</span> </p>
+                      Status : <span style="color:red"> {{this.status}}</span> </p>
                   </div>
                   {{!-- <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                     <a href="/viewOrderSingle/{{this.item}}" class="btn primary-btn">Details</a>
@@ -56,7 +56,7 @@
                   {{#if this.orderCancelled}}
 
                 {{else}}
-                    <button class="btn btn-danger cancel-order" style="width: 120px; font-size: small ;" onclick="cancelOrder('{{../order._id}}','{{this.pro_id._id}}','{{this.subtotal}}','{{../order.grandTotal}}','{{../order.couponPercent}}','{{../order.reFund}}','{{this.quantity}}')">Cancel Order</button>
+                    <button class="btn btn-danger cancel-order" style="width: 120px; font-size: small ;" onclick="cancelOrder('{{../order._id}}','{{this.pro_id._id}}','{{this.subtotal}}','{{../order.grandTotal}}','{{../order.couponPercent}}','{{../order.reFund}}','{{this.quantity}}','{{../order.ShippingCharge}}')">Cancel Order</button>
 
                 {{/if}}
                   </div>
@@ -73,8 +73,9 @@
             {{/each}}
             
 
-            <div class="d-flex justify-content-between pt-2">
-              <p class="fw-bold mb-0"><span style="color:#ff5b20;">Order Details</span></p>
+            <div class="d-flex justify-content-between pt-2 font-weight-bold">
+
+              <p class="fw-bold mb-0"><span style="color:#000000;">Order Details</span></p>
               <p class="text-muted mb-0"><span class="fw-bold me-4">Subtotal</span> ₹ {{order.Total}}</p>
             </div>
 
@@ -98,7 +99,7 @@
             
              <div class="d-flex justify-content-between ">
               {{!-- <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p> --}}
-              <p class="text-muted mb-0"><span class="fw-bold me-4">Refund : </span> {{order.reFund}}</p>
+              <p class="text-muted mb-0" ><span class="fw-bold me-4" style="color:red;">Refund : </span> {{order.reFund}}</p>
             </div>
             <div class="d-flex justify-content-between ">
               {{!-- <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p> --}}
@@ -124,7 +125,7 @@
 {{!-- popep --}}
 <script>
     // delete popup
-    function cancelOrder(orderId, proId, subtotal,totalAmount,couponPercent, reFund,quantity) {
+    function cancelOrder(orderId, proId, subtotal,totalAmount,couponPercent, reFund,quantity,ShippingCharge) {
 					Swal.fire({
 						title: 'Are you sure?',
 						text: "You won't be able to revert this!",
@@ -155,6 +156,7 @@
           couponPercent:couponPercent,
           reFund:reFund,
           quantity:quantity,  
+          ShippingCharge:ShippingCharge
             },
             method: 'post',
             success: (response) => {

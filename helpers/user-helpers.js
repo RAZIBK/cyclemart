@@ -186,6 +186,16 @@ module.exports = {
     });
   },
 
+  userblock: (userid) => {
+    return new Promise(async (resolve, reject) => {
+        let user = await userData.findOne({ _id: userid })
+
+        resolve(user)
+
+
+    })
+},
+
   userprofile: (userid) => {
     return new Promise(async (resolve, reject) => {
       const user = await userData.findOne({ _id: userid }).lean();
@@ -714,13 +724,15 @@ module.exports = {
   },
 
   cancelorder: (data) => {
+    console.log("==========================================");
+    console.log(data.ShippingCharge);
     order = mongoose.Types.ObjectId(data.orderId);
     let quantity = parseInt(data.quantity);
     discountPrice =
       parseInt(data.subtotal) -
       ((parseInt(data.couponPercent) * parseInt(data.subtotal)) / 100).toFixed(
         0
-      );
+      ); 
     const status = "Cancelled";
     return new Promise(async (resolve, reject) => {
       const cancelorder = await ordermodel.updateMany(
@@ -767,7 +779,7 @@ module.exports = {
         await ordermodel.updateMany(
           { _id: data.orderId },
           {
-            $inc: { reFund: 500, grandTotal: -500 },
+            $inc: { reFund: data.ShippingCharge, grandTotal: -data.ShippingCharge },
           }
         );
         resolve({ status: true });
