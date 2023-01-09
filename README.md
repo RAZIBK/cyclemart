@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Introduction](#introduction)
+- [Demo](#demo)
 - [Run](#run)
 - [Technology](#technology)
 - [Features](#features)
@@ -21,6 +22,12 @@ The application is deployed to AWS and can be accessed through the following lin
 The website resembles a real store and you can add products to your cart and wishlist and pay for them. If you want to try the checkout process, you can use the dummy card number/ upi/ Internet Bankinng provided by Razorpay for testing . Please <u><b>DO NOT</b></u> provide real card number and data.
 
 In order to access the admin panel on "/admin" you need to provide the admin email and password.
+
+## Demo
+
+![screenshot](https://github.com/RAZIBK/cyclemart/blob/master/Screenshot_20230109_113445.png)
+![screenshot](https://github.com/RAZIBK/cyclemart/blob/master/Screenshot_20230109_113553.png)
+
 
 
 ## Run
